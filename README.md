@@ -45,6 +45,8 @@ python -m pip install scikit-learn numpy joblib pytest
 python -m src.iris_model.train
 ```
 ## Example output:
+```
 ✅ Training complete. Accuracy: 0.933
 📦 Model saved to: models/iris.joblib
 📊 Metrics saved to: artifacts/metrics.json
+```
