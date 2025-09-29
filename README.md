@@ -4,19 +4,16 @@ A small machine learning project that predicts the species of iris flowers based
 Built to practice Git, testing, pre-commit, and GitHub Actions CI.
 
 ## 📂 Project Structure
+
 iris-ml-pipeline/
-│
 ├── src/
-│   └── iris_model/
-│       └── train.py       # Training script
-│
-├── models/                # Saved trained models (created after training)
-│   └── iris.joblib
-│
-├── artifacts/             # Saved metrics (created after training)
-│   └── metrics.json
-│
-├── .venv/                 # Virtual environment (not committed)
+│ └── iris_model/
+│ └── train.py # Training script
+├── models/ # Created after training
+│ └── iris.joblib
+├── artifacts/ # Created after training
+│ └── metrics.json
+├── .venv/ # Not committed
 └── README.md
 
 ## ⚙️ Setup
