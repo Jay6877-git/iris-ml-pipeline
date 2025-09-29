@@ -1,5 +1,14 @@
-__pycache__/
+# Virtual environment
 .venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Model + artifact files
 models/
 artifacts/
-*.pyc
+
+# IDE/editor settings
+.vscode/
+.idea/
