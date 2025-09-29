@@ -4,7 +4,7 @@ A small machine learning project that predicts the species of iris flowers based
 Built to practice Git, testing, pre-commit, and GitHub Actions CI.
 
 ## 📂 Project Structure
-
+```
 iris-ml-pipeline/
 ├── src/
 │ └── iris_model/
@@ -15,6 +15,7 @@ iris-ml-pipeline/
 │ └── metrics.json
 ├── .venv/ # Not committed
 └── README.md
+```
 
 ## ⚙️ Setup
 
