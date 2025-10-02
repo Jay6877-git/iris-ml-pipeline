@@ -10,6 +10,7 @@ iris-ml-pipeline/
 ├── src/
 │   └── iris_model/
 │       └── train.py       # Training script
+│       └── predict.py     # Prediction script
 │
 ├── models/                # Saved trained models (created after training)
 │   └── iris.joblib
@@ -49,4 +50,31 @@ python -m src.iris_model.train
 ✅ Training complete. Accuracy: 0.933
 📦 Model saved to: models/iris.joblib
 📊 Metrics saved to: artifacts/metrics.json
+```
+
+## 🔮 Run Prediction
+Once training is done and models/iris.joblib exists, you can run predictions.
+
+### Predict a single sample from CLI
+```
+python -m src.iris_model.predict 5.1 3.5 1.4 0.2
+```
+
+Example output:
+```
+Predicted class: 0
+```
+➡️ Class labels are integers (0, 1, 2), corresponding to the Iris dataset species.
+
+### Predict multiple samples (in code)
+```
+from src.iris_model.predict import load_model, predict
+
+model = load_model()
+samples = [
+    [5.1, 3.5, 1.4, 0.2],   # Iris-setosa-like
+    [6.7, 3.0, 5.2, 2.3]    # Iris-virginica-like
+]
+print(predict(samples, model))
+# Output: [0, 2]
 ```
