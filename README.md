@@ -9,7 +9,7 @@ iris-ml-pipeline/
 │
 ├── src/
 │   └── iris_model/
-│       └── train.py       # Training script
+│       ├── train.py       # Training script
 │       └── predict.py     # Prediction script
 │
 ├── models/                # Saved trained models (created after training)
@@ -18,7 +18,13 @@ iris-ml-pipeline/
 ├── artifacts/             # Saved metrics (created after training)
 │   └── metrics.json
 │
-├── .venv/                 # Virtual environment (not committed)
+├── tests/                 # Unit tests (pytest)
+│
+├── .github/workflows/     # GitHub Actions CI workflows
+│   └── ci.yml
+│
+├── .pre-commit-config.yaml  # Local lint/format hooks
+├── .venv/                   # Virtual environment (not committed)
 └── README.md
 ```
 
@@ -78,3 +84,32 @@ samples = [
 print(predict(samples, model))
 # Output: [0, 2]
 ```
+## 🧪 Testing
+Run unit tests with pytest:
+```
+pytest -q
+```
+
+Tests cover:
+- Training saves model + metrics
+- Prediction works with valid input
+- Prediction rejects invalid input
+
+## 🧹 Pre-commit (Lint & Format)
+We use Black (formatter) and Ruff (linter). Install hooks:
+```
+pre-commit install
+```
+Run on all files:
+```
+pre-commit run --all-files
+```
+Now every ```git commit``` will auto-format + lint your code.
+
+## 🤖 Continuous Integration (CI/CD)
+GitHub Actions runs on every push and pull request:
+- Lint (Black + Ruff)
+- Run all tests (pytest)
+Workflow file: ```.github/workflows/ci.yml```
+
+Check results in the Actions tab of your repo.
