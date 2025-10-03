@@ -32,6 +32,7 @@ def load_model():
     else:
         return joblib.load(model_path)
 
+
 def predict(samples, model):
     """
     Predict the class of new iris samples using the trained model.
@@ -55,30 +56,33 @@ def predict(samples, model):
         else:
             print("Invalid input: expected 4 numbers for one sample.")
             return None
-    
+
     # Case 2: multiple samples passed as 2D array
     elif numpy_sample.ndim == 2:
         n, m = numpy_sample.shape
 
         if m != 4:
-            print("Invalid input: each sample must have exactly 4 numbers (sepal_length, sepal_width, petal_length, petal_width).")
+            print(
+                "Invalid input: each sample must have exactly 4 numbers (sepal_length, sepal_width, petal_length, petal_width)."
+            )
             return None
-    
+
         try:
             numpy_sample = numpy_sample.astype(float)
         except ValueError:
             print("Invalid input: all values must be numeric (got 'abc' instead).")
             return None
-    
+
     # Case 3: higher-dimensional input → reject
     else:
         print("Invalid input: expected 1D (single) or 2D (multiple) samples.")
         return None
-    
+
     # Make predictions with the model
-    predictions =  model.predict(numpy_sample)
+    predictions = model.predict(numpy_sample)
 
     return predictions.tolist()
+
 
 if __name__ == "__main__":
     """
@@ -88,7 +92,7 @@ if __name__ == "__main__":
         python -m src.iris_model.predict <sepal_len> <sepal_wid> <petal_len> <petal_wid>
     """
     # this block only runs if file is executed directly
-    args = sys.argv[1:]   # collect command-line arguments (skip script name)
+    args = sys.argv[1:]  # collect command-line arguments (skip script name)
 
     if len(args) == 4:
         # Validate that all 4 inputs are numeric
@@ -109,7 +113,9 @@ if __name__ == "__main__":
             sys.exit(1)
         else:
             print(f"Predicted class: {preds[0]}")
-    
+
     else:
         # Wrong number of args → show usage
-        print("Usage: python -m src.iris_model.predict <sepal_len> <sepal_wid> <petal_len> <petal_wid>")
+        print(
+            "Usage: python -m src.iris_model.predict <sepal_len> <sepal_wid> <petal_len> <petal_wid>"
+        )
